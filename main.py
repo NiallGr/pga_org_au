@@ -45,8 +45,8 @@ def click_button():
 
         # Loop through all the elements in a dropdown
         for dropdowns in range(1, count_of_divs + 1):
-        # Testing
-        # for dropdowns in range(2, 5, 1):
+            # Testing
+            # for dropdowns in range(2, 5, 1):
 
             postcode_input.send_keys(postcode)
 
