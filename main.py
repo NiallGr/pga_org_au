@@ -21,7 +21,7 @@ def click_button():
     # options.add_argument("--headless")
     options.add_argument("--window-size=%s" % WINDOW_SIZE)
     # options.add_argument('--headless')
-    # Download google chrome driver (Needed for Selenuim)
+    # Download Google Chrome driver (Needed for Selenuim)
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
     driver.get('https://pga.org.au/find-a-pga-pro/')
 
@@ -40,6 +40,7 @@ def click_button():
         postcode_input.send_keys(postcode)
         # 2 seconds or will not catch
         time.sleep(2)
+        # This will dynamically produce the length of divs in each search result
         count_of_divs = len(parent_div.find_elements(By.CLASS_NAME, "angucomplete-row"))
         # print(count_of_divs)
 
@@ -61,6 +62,8 @@ def click_button():
                 # print(dropdown_increments)
                 print('Postcode: ', names_of_postcodes)
 
+                # Set class to make the current dropdown the 'Selected row', this will make it clickable which will
+                # be clicked in the upcoming Try statement: for dropdown_increments.click()
                 driver.execute_script(
                     "arguments[0].setAttribute('class', 'angucomplete-row ng-scope angucomplete-selected-row')",
                     dropdown_increments)
@@ -69,6 +72,7 @@ def click_button():
             except:
                 print('no dropdown or element found')
             time.sleep(3)
+            # Click selected dropdown
             try:
                 dropdown_increments.click()
             except:
