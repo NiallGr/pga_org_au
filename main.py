@@ -98,6 +98,7 @@ def click_button():
 def scrape(soup):
     scraped_data_list = []
     Source = 'https://www.aiff.net.au/2022-exhibitor-list/'
+    # Try and find company sections
     try:
         info_section = soup.find_all('div', 'col-md-4 cards-stacked below-row ng-scope')
         # print(info_section)
